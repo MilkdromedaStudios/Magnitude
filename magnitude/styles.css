@@ -180,3 +180,17 @@
 #futuristic-sidebar::-webkit-scrollbar-thumb:hover {
   background: rgba(125,211,252,0.6);
 }
+
+#linksList button {
+  transition: all 0.15s ease;
+}
+#linksList button:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+#linksList button + button { /* Delete button next to link */
+  background: rgba(255,0,0,0.2);
+}
+#linksList button + button:hover {
+  background: rgba(255,0,0,0.35);
+}
