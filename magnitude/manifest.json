@@ -5,11 +5,7 @@
   "description": "Left floating sidebar with liquid glass effect, custom links, and iframe viewer",
   "permissions": ["storage"],
   "action": {
-    "default_popup": "sidepanel.html",
-    "default_icon": {
-      "48": "icon48.png",
-      "128": "icon128.png"
-    }
+    "default_popup": "sidepanel.html"
   },
   "content_scripts": [
     {
@@ -17,9 +13,5 @@
       "js": ["sidepanel.js"],
       "css": ["styles.css"]
     }
-  ],
-  "icons": {
-    "48": "icon48.png",
-    "128": "icon128.png"
-  }
+  ]
 }
