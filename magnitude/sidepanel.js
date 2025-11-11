@@ -49,24 +49,45 @@
   const collapseBtn = sidebar.querySelector('#collapseBtn');
 
   // ---------- Render Links ----------
-  function render() {
-    linksList.innerHTML='';
-    links.forEach(l=>{
-      const btn = document.createElement('button');
-      btn.innerHTML = `${l.icon||'🌐'} ${l.title}`;
-      btn.onclick = ()=>{
-        homeMenu.style.display = 'none';
-        addFormContainer.style.display = 'none';
-        iframeContainer.style.display = 'flex';
-        viewer.src = l.url;
-        viewer.style.width = (iframeSizes[l.url]?.width || '100%');
-        viewer.style.height = (iframeSizes[l.url]?.height || '50%');
-      }
-      linksList.appendChild(btn);
-    });
-  }
+function render() {
+  linksList.innerHTML='';
+  links.forEach((l, i)=>{
+    const btnContainer = document.createElement('div');
+    btnContainer.style.display = 'flex';
+    btnContainer.style.justifyContent = 'space-between';
+    btnContainer.style.alignItems = 'center';
 
-  render();
+    const btn = document.createElement('button');
+    btn.innerHTML = `${l.icon||'🌐'} ${l.title}`;
+    btn.style.flex = '1';
+    btn.onclick = ()=>{
+      homeMenu.style.display = 'none';
+      addFormContainer.style.display = 'none';
+      iframeContainer.style.display = 'flex';
+      viewer.src = l.url;
+      viewer.style.width = (iframeSizes[l.url]?.width || '100%');
+      viewer.style.height = (iframeSizes[l.url]?.height || '50%');
+    }
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.innerHTML = '🗑️';
+    deleteBtn.style.marginLeft = '6px';
+    deleteBtn.style.background = 'rgba(255,0,0,0.2)';
+    deleteBtn.style.border = 'none';
+    deleteBtn.style.borderRadius = '8px';
+    deleteBtn.style.cursor = 'pointer';
+    deleteBtn.onclick = (e)=>{
+      e.stopPropagation(); // prevent opening iframe
+      links.splice(i,1);
+      localStorage.setItem('sidebar_links', JSON.stringify(links));
+      render();
+    }
+
+    btnContainer.appendChild(btn);
+    btnContainer.appendChild(deleteBtn);
+    linksList.appendChild(btnContainer);
+  });
+}
 
   // ---------- Add Link ----------
   addLinkBtn.onclick = ()=>{
