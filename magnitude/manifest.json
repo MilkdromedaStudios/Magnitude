@@ -2,11 +2,8 @@
   "manifest_version": 3,
   "name": "Futuristic Glass Sidebar",
   "version": "1.0",
-  "description": "Left floating sidebar with liquid glass effect, custom links, and iframe viewer",
+  "description": "Floating left sidebar with liquid glass effect",
   "permissions": ["storage"],
-  "action": {
-    "default_popup": "sidepanel.html"
-  },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
