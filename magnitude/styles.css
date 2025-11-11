@@ -6,11 +6,11 @@
   left: 0;
   width: 280px;
   max-width: 90vw;
-  backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(22px) saturate(180%);
   background-color: rgba(10,25,50,0.65);
-  box-shadow: 4px 0 30px rgba(0,0,0,0.6);
-  border-top-right-radius: 16px;
-  border-bottom-right-radius: 16px;
+  box-shadow: 6px 0 40px rgba(0,0,0,0.7);
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 18px;
   color: #e6eef8;
   display: flex;
   flex-direction: column;
@@ -19,7 +19,9 @@
   overflow: hidden;
   font-family: 'Segoe UI', sans-serif;
 }
-#futuristic-sidebar.collapsed { transform: translateX(-100%); }
+#futuristic-sidebar.collapsed {
+  transform: translateX(-100%);
+}
 
 /* ---------- Header ---------- */
 #futuristic-sidebar .header {
@@ -30,7 +32,7 @@
   font-size:16px;
   font-weight:600;
   border-bottom:1px solid rgba(255,255,255,0.12);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
   background-color: rgba(10,25,50,0.45);
   user-select: none;
 }
@@ -43,8 +45,20 @@
   padding:10px;
   gap:8px;
   overflow-y: auto;
+  transition: all 0.3s ease;
 }
 
+/* Greeting / tip styles */
+#greeting, #tip {
+  font-size: 13px;
+  color: #7dd3fc;
+  margin-bottom: 6px;
+  font-weight: 500;
+  text-shadow: 0 0 6px rgba(125,211,252,0.5);
+  opacity: 0.9;
+}
+
+/* ---------- Links ---------- */
 #linksList {
   display:flex;
   flex-direction:column;
@@ -54,6 +68,7 @@
 #linksList button {
   display:flex;
   align-items:center;
+  justify-content: space-between;
   gap:6px;
   background: rgba(255,255,255,0.08);
   border:none;
@@ -61,15 +76,28 @@
   padding:8px 12px;
   color:#7dd3fc;
   cursor:pointer;
-  backdrop-filter: blur(8px);
-  transition: all 0.15s ease;
+  backdrop-filter: blur(10px);
+  transition: all 0.2s ease;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  box-shadow: 0 0 4px rgba(125,211,252,0.2);
 }
 #linksList button:hover {
   background: rgba(255,255,255,0.15);
-  transform: translateY(-1px);
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 0 12px rgba(125,211,252,0.4);
+}
+
+/* Delete button */
+#linksList button + button {
+  background: rgba(255,0,0,0.2);
+  color: #fff;
+  transition: all 0.2s;
+}
+#linksList button + button:hover {
+  background: rgba(255,0,0,0.35);
+  transform: scale(1.1);
 }
 
 /* ---------- Add Link Button ---------- */
@@ -81,9 +109,14 @@
   padding:8px 12px;
   font-size:16px;
   cursor:pointer;
-  transition:0.2s;
+  transition: all 0.2s;
+  box-shadow: 0 0 6px rgba(79,195,247,0.5);
 }
-#addLinkBtn:hover { background: rgba(30,161,242,0.85); }
+#addLinkBtn:hover {
+  background: rgba(30,161,242,0.85);
+  transform: scale(1.05);
+  box-shadow: 0 0 14px rgba(79,195,247,0.7);
+}
 
 /* ---------- Add Link Form ---------- */
 #addLinkFormContainer form {
@@ -91,9 +124,10 @@
   flex-direction: column;
   gap:6px;
   padding:10px;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
   background-color: rgba(10,25,50,0.55);
   border-radius:14px;
+  box-shadow: 0 0 10px rgba(125,211,252,0.3);
 }
 #addForm input {
   padding:6px 10px;
@@ -102,6 +136,11 @@
   background: rgba(255,255,255,0.05);
   color:#e6eef8;
   font-size:14px;
+  transition: all 0.2s;
+}
+#addForm input:focus {
+  border-color: #4fc3f7;
+  box-shadow: 0 0 8px rgba(79,195,247,0.5);
 }
 #addForm button {
   padding:6px 12px;
@@ -111,9 +150,13 @@
   font-size:14px;
   background: #4fc3f7;
   color:#0b1223;
-  transition:0.2s;
+  transition: all 0.2s;
 }
-#addForm button:hover { background: #1ea1f2; }
+#addForm button:hover {
+  background: #1ea1f2;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(79,195,247,0.5);
+}
 
 /* ---------- Iframe Container ---------- */
 #iframeContainer {
@@ -122,11 +165,13 @@
   flex-direction: column;
   position: relative;
   background: rgba(5,15,35,0.65);
-  backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(22px) saturate(180%);
   border-radius: 0 16px 16px 0;
   overflow: hidden;
+  transition: all 0.2s;
 }
 
+/* Back button */
 #iframeContainer #backBtn {
   align-self:flex-start;
   margin:6px 12px;
@@ -137,9 +182,13 @@
   border-radius:10px;
   color:#7dd3fc;
   cursor:pointer;
-  transition:0.2s;
+  transition: all 0.2s;
 }
-#iframeContainer #backBtn:hover { background: rgba(255,255,255,0.2); }
+#iframeContainer #backBtn:hover {
+  background: rgba(255,255,255,0.25);
+  transform: scale(1.05);
+  box-shadow: 0 0 8px rgba(125,211,252,0.4);
+}
 
 /* ---------- Viewer Iframe ---------- */
 #viewerFrame {
@@ -150,19 +199,25 @@
   margin:8px 10px 10px 10px;
   background: rgba(0,0,0,0.05);
   box-shadow: inset 0 0 20px rgba(255,255,255,0.03);
+  transition: all 0.15s ease;
 }
 
 /* ---------- Resizer ---------- */
 #resizer {
-  width:100%;
-  height:8px;
-  cursor:ns-resize;
-  background: rgba(255,255,255,0.05);
+  width:12px;
+  height:12px;
+  cursor:nwse-resize;
   position:absolute;
   bottom:0;
-  left:0;
-  border-top:1px solid rgba(255,255,255,0.15);
-  border-radius:4px 4px 0 0;
+  right:0;
+  background: rgba(255,255,255,0.1);
+  border-radius:4px;
+  box-shadow: 0 0 4px rgba(125,211,252,0.5);
+  transition: all 0.2s;
+}
+#resizer:hover {
+  background: rgba(125,211,252,0.4);
+  transform: scale(1.2);
 }
 
 /* ---------- Scrollbar Styling ---------- */
@@ -179,49 +234,4 @@
 }
 #futuristic-sidebar::-webkit-scrollbar-thumb:hover {
   background: rgba(125,211,252,0.6);
-}
-
-#linksList button {
-  transition: all 0.15s ease;
-}
-#linksList button:hover {
-  background: rgba(255,255,255,0.15);
-}
-
-#linksList button + button { /* Delete button next to link */
-  background: rgba(255,0,0,0.2);
-}
-#linksList button + button:hover {
-  background: rgba(255,0,0,0.35);
-}
-
-#iframeContainer {
-  flex:1;
-  display:flex;
-  flex-direction: column;
-  position: relative;
-  background: rgba(5,15,35,0.65);
-  backdrop-filter: blur(20px) saturate(180%);
-  border-radius: 0 16px 16px 0;
-  overflow: hidden;
-}
-
-#viewerFrame {
-  border:none;
-  border-radius:12px;
-  margin:8px 10px 10px 10px;
-  background: rgba(0,0,0,0.05);
-  box-shadow: inset 0 0 20px rgba(255,255,255,0.03);
-  transition: width 0.1s, height 0.1s;
-}
-
-#resizer {
-  width:12px;
-  height:12px;
-  cursor:nwse-resize;
-  position:absolute;
-  bottom:0;
-  right:0;
-  background: rgba(255,255,255,0.1);
-  border-radius:4px;
 }
